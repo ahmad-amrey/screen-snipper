@@ -7,10 +7,12 @@ package windowsnapper;
 
 import java.awt.AWTException;
 import java.awt.Color;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.Image;
+import java.awt.MouseInfo;
 import java.awt.Rectangle;
 import java.awt.Robot;
-import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -34,7 +36,8 @@ public class SnapSelector extends javax.swing.JFrame {
     /**
      * Creates new form SnapSelector
      */
-    public SnapSelector() {
+    public SnapSelector(GraphicsDevice gd) {
+        super(gd.getDefaultConfiguration());
         setUndecorated(true);
         try {
             Image i;
@@ -181,9 +184,28 @@ public class SnapSelector extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    Rectangle screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
-                    screenshotImage = new Robot().createScreenCapture(screenRect);
-                    thisFrame = new SnapSelector();
+//                    GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+////                    Rectangle screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+////                    Rectangle screenRect = ge.getMaximumWindowBounds();
+//
+//                    GraphicsDevice[] screens = ge.getScreenDevices();
+//
+//                    Rectangle allScreenBounds = new Rectangle();
+//                    for (GraphicsDevice screen : screens) {
+//                        Rectangle screenBounds = screen.getDefaultConfiguration().getBounds();
+//
+//                        allScreenBounds.width += screenBounds.width;
+//                        allScreenBounds.height = Math.max(allScreenBounds.height, screenBounds.height);
+//                    }
+//
+//                    screenshotImage = new Robot().createScreenCapture(allScreenBounds);
+//                    thisFrame = new SnapSelector(screens[]);
+                    
+                    GraphicsDevice gd = MouseInfo.getPointerInfo().getDevice();
+                    Rectangle screenBounds = gd.getDefaultConfiguration().getBounds();
+                    screenshotImage = new Robot().createScreenCapture(screenBounds);
+                    thisFrame = new SnapSelector(gd);
+                    
                     BufferedImage grayImage = new BufferedImage(screenshotImage.getWidth(), screenshotImage.getHeight(), BufferedImage.TYPE_INT_RGB);
 
                     for (int i = 0; i < grayImage.getWidth(); i++) {
