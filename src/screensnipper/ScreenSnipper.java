@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package windowsnapper;
+package screensnipper;
 
 import java.awt.AWTException;
 
@@ -11,13 +11,13 @@ import java.awt.AWTException;
  *
  * @author ahmad
  */
-public class WindowSnapper {
+public class ScreenSnipper {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) throws AWTException {
-        SnapSelector.main(args);
+        SnipSelector.main(args);
     }
 
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package windowsnapper;
+package screensnipper;
 
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -15,20 +15,20 @@ import javax.swing.ImageIcon;
  *
  * @author ahmad
  */
-public class SnapViewer extends javax.swing.JFrame {
+public class SnipViewer extends javax.swing.JFrame {
 
     BufferedImage snapImage;
 
     /**
      * Creates new form SnapViewer
      */
-    public SnapViewer(BufferedImage snapImage) {
+    public SnipViewer(BufferedImage snapImage) {
         this.snapImage = snapImage;
 //        setSize(snapImage.getWidth(), snapImage.getHeight());
         //setResizable(false);
         try {
             Image i;
-            i = ImageIO.read(getClass().getResource("/windowsnapper/ico.png"));
+            i = ImageIO.read(getClass().getResource("/screensnipper/ico.png"));
             setIconImage(i);
         } catch (IOException ex) {
         }
@@ -86,20 +86,21 @@ public class SnapViewer extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SnapViewer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SnipViewer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SnapViewer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SnipViewer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SnapViewer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SnipViewer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SnapViewer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SnipViewer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                SnapViewer thisFrame = new SnapViewer(snapImage);
+                SnipViewer thisFrame = new SnipViewer(snapImage);
                 thisFrame.setVisible(true);
             }
         });
